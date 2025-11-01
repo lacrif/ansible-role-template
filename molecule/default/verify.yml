@@ -1,0 +1,7 @@
+---
+- name: Verify Role
+  hosts: all
+  tasks:
+    - name: Display Hello Template
+      debug:
+        msg: "Hello Template Role!"
