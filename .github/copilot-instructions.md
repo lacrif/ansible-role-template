@@ -50,8 +50,20 @@ Voici des instructions destinées à l'agent Copilot pour travailler sur ce dép
 
 ## Tests recommandés
 
+### Molecule
+
 - Exécuter molecule : `molecule test`
-- Linter YAML/Ansible : `ansible-lint .` et `yamllint .` si disponibles
+- `molecule/` : s'assurer que `molecule.yml` et `converge.yml` sont cohérents; Si tu modifies des handlers ou des services, adapte les tests de vérification (`verify.yml`).
+- Utiliser des images personnalisés :
+    - `lacrif/rockylinux-systemd:9` pour Rocky Linux 9 avec systemd,
+    - `lacrif/ubuntu-systemd:noble` pour Ubuntu 24.04 avec systemd,
+    - `lacrif/debian-systemd:trixie` pour Debian 13 avec systemd.
+- Images : vérifier que les images Docker/Podman dans `molecule/default/molecule.yml` correspondent aux plateformes supportées.
+
+### Linter 
+
+- Exécuter `ansible-lint .` pour vérifier la syntaxe et les bonnes pratiques Ansible.
+- Exécuter `yamllint .` pour vérifier la syntaxe YAML.
 
 ## Notes finales
 
@@ -59,3 +71,4 @@ Voici des instructions destinées à l'agent Copilot pour travailler sur ce dép
 - Si tu rencontres des parties ambiguës du rôle, propose deux options de correction avec leurs avantages/inconvénients.
 
 Merci de respecter ces consignes chaque fois que tu contribues au dépôt.
+
